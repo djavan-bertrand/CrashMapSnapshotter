@@ -7,8 +7,8 @@ What is happening is, after the first error, the completion handler is not calle
 
 ## Content of the project
 This project contains only one view controller: `ViewController`. This view controller contains a scroll view that displays a map snapshot. When zooming inside a snapshot, it gathers a better quality snapshot (i.e. same geographic area but snapshot image is bigger).<br/>
-The first snapshot is get at a `low` quality (`892x713`). After zooming, the snapshot is get at a `high` quality (`4460x3565`).<br/>
-To be sure to make the snapshotter crash, the `high` quality snapshot is a very big image.
+The first snapshot is taken at a `low` quality (`892x713`). After zooming, the snapshot is taken at a `high` quality (`4460x3565`).<br/>
+In order to trigger an error every time when requesting a `high` quality snapshot, the `high` quality corresponds to a very big image.
 
 There is a UILabel at the bottom of the screen to display the current quality and any error that happened.
 
@@ -17,7 +17,7 @@ There is a UILabel at the bottom of the screen to display the current quality an
 - Launch the app<br/>
   *A snapshot should be displayed, debug label should tell that the low quality is currently displayed.*
 - Zoom in the snapshot<br/>
-  *As the big quality cannot be loaded, the snapshotter will issue an error, this will be displayed in the debug label.*
+  *As the big quality cannot be loaded, the snapshotter will issue an error, this will be displayed in the debug label. Please note that this is not the bug as the completion handler is correctly called back with the error.*
 - Kill the app and relaunch it.<br/>
   *This is to display the low quality again*
 
